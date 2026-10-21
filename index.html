@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seu Nome — Designer Gráfico</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap">
+<style>
+:root{
+  --navy:#0f2233; --navy-deep:#0a1722; --surface:#173048; --line:#2ed57355;
+  --green:#2ed573; --white:#ffffff; --muted:#a9bccd; --ink:#0f2233;
+  color-scheme:dark; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark}}
+:root[data-theme="dark"]{color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--navy);color:var(--white);font-family:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--navy-deep);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navy-deep);z-index:30}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font-weight:800;font-size:1.25rem;text-decoration:none;letter-spacing:-.02em}
+.logo b{color:var(--green)}
+nav{display:flex;gap:24px;font-size:.95rem}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--green)}
+
+.hero{background:var(--navy);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;padding-top:72px;padding-bottom:72px}
+.hero small{font-size:1.6rem;font-weight:300;display:block}
+.hero h1{margin:0 0 16px;font-size:clamp(2.8rem,8vw,5.6rem);line-height:.95;font-weight:800;color:var(--green);letter-spacing:-.03em}
+.hero p{max-width:34ch;color:var(--muted);font-size:1.1rem;margin:0 0 28px}
+.btn{display:inline-block;background:var(--green);color:var(--ink);font-weight:600;text-decoration:none;padding:14px 28px;border-radius:8px;border:0;font:inherit;font-weight:600;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.dark{background:var(--navy-deep);color:var(--white)}
+.photo{aspect-ratio:1;border-radius:50%;background:var(--green);display:grid;place-items:center;max-width:380px;justify-self:center;width:100%;position:relative}
+.photo span{font-size:1.1rem;font-weight:600;color:var(--ink);text-align:center;padding:24px}
+.tag{position:absolute;background:var(--white);color:var(--ink);font-size:.85rem;font-weight:600;padding:8px 14px;border-radius:8px;box-shadow:0 8px 24px #0006}
+.tag.a{top:8%;right:-6%}.tag.b{top:46%;left:-12%}.tag.c{bottom:6%;right:-4%}
+
+.band{background:var(--green);color:var(--ink);padding:36px 0}
+.band h2{margin:0;font-size:clamp(1.5rem,3.6vw,2.2rem);font-weight:800;line-height:1.15}
+.band em{font-weight:300;display:block}
+.band .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+
+section{padding:80px 0}
+h2.title{margin:0 0 12px;text-align:center;font-size:clamp(1.8rem,4vw,2.4rem);color:var(--green);font-weight:800}
+.lead{text-align:center;color:var(--muted);max-width:52ch;margin:0 auto 36px}
+
+.filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.chip{background:transparent;color:var(--white);border:1px solid var(--line);border-radius:999px;padding:8px 18px;font:inherit;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--green);color:var(--ink);border-color:var(--green);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;text-align:left;padding:0;color:inherit;font:inherit;cursor:pointer;display:block;width:100%}
+.card .art{aspect-ratio:4/3;display:grid;place-items:center;font-size:4.5rem;font-weight:800;color:#ffffffcc}
+.card .info{padding:16px 18px 20px}
+.card h3{margin:0 0 2px;font-size:1.15rem}
+.card p{margin:0;color:var(--green);font-size:.9rem}
+.card:hover{border-color:var(--green)}
+
+#sobre{background:var(--navy-deep)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.cols h3{margin:0 0 8px;color:var(--green)}
+.cols p{margin:0;color:var(--muted)}
+.tools{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:36px}
+.tools span{border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-size:.9rem}
+
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.svc div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px}
+.svc h3{margin:0 0 8px;color:var(--green);font-size:1.1rem}
+.svc p{margin:0;color:var(--muted);font-size:.95rem}
+
+footer{background:#000;padding:36px 0;text-align:center;color:var(--muted);font-size:.85rem}
+footer a{color:var(--white);font-size:1rem;display:inline-block;margin-bottom:20px}
+
+dialog{border:1px solid var(--green);background:var(--navy);color:var(--white);border-radius:14px;padding:0;max-width:640px;width:calc(100% - 32px)}
+dialog::backdrop{background:#000a}
+dialog .art{aspect-ratio:16/9;display:grid;place-items:center;font-size:5rem;font-weight:800;color:#ffffffcc}
+dialog .body{padding:24px}
+dialog h3{margin:0 0 4px;font-size:1.5rem}
+dialog dt{color:var(--green);font-weight:600;margin-top:14px}
+dialog dd{margin:2px 0 0;color:var(--muted)}
+.close{position:absolute;top:12px;right:12px;background:var(--navy-deep);color:var(--white);border:1px solid var(--line);border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:1.1rem}
+
+@media (max-width:760px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:40px}
+  .cols{grid-template-columns:1fr}
+  nav{gap:14px;font-size:.85rem}
+  .tag.b{left:0}.tag.a,.tag.c{right:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#topo" id="logo"></a>
+  <nav><a href="#projetos">Projetos</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#contato">Contato</a></nav>
+</div></header>
+
+<main id="topo">
+<div class="hero"><div class="wrap">
+  <div>
+    <small id="h-ola"></small>
+    <h1 id="h-titulo"></h1>
+    <p id="h-texto"></p>
+    <a class="btn" href="#projetos">Ver projetos</a>
+  </div>
+  <div class="photo">
+    <span id="foto-txt"></span>
+    <img id="foto-img" alt="" hidden style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%">
+    <div class="tag a" id="tag-a"></div>
+    <div class="tag b" id="tag-b"></div>
+    <div class="tag c" id="tag-c"></div>
+  </div>
+</div></div>
+
+<div class="band"><div class="wrap"><h2 id="faixa"></h2></div></div>
+
+<section id="projetos"><div class="wrap">
+  <h2 class="title">Projetos</h2>
+  <p class="lead">Uma seleção dos trabalhos de que mais me orgulho. Clique em um projeto para ver o processo.</p>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="sobre"><div class="wrap">
+  <h2 class="title">Sobre mim</h2>
+  <p class="lead" id="sobre-intro"></p>
+  <div class="cols" id="sobre-cols"></div>
+  <div class="tools" id="ferramentas"></div>
+</div></section>
+
+<section id="servicos"><div class="wrap">
+  <h2 class="title">Serviços</h2>
+  <p class="lead">O que posso fazer pela sua marca.</p>
+  <div class="svc" id="servicos-lista"></div>
+</div></section>
+
+<div class="band" id="contato"><div class="wrap">
+  <h2 id="contato-titulo"></h2>
+  <a class="btn dark" id="contato-btn" href="#"></a>
+</div></div>
+</main>
+
+<footer><div class="wrap">
+  <div id="redes" style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap"></div>
+  <a href="#topo">Voltar ao topo</a><br>
+  <span id="copy"></span>
+</div></footer>
+
+<dialog id="modal" aria-labelledby="m-title">
+  <button class="close" id="close" aria-label="Fechar">✕</button>
+  <div class="art" id="m-art"></div>
+  <div class="body">
+    <h3 id="m-title"></h3>
+    <div id="m-cat" style="color:var(--green)"></div>
+    <dl id="m-body"></dl>
+  </div>
+</dialog>
+
+<script>
+// =====================================================
+// SEUS DADOS: edite só este bloco (e a lista PROJETOS abaixo).
+// Deixe "" onde não quiser mostrar algo.
+// =====================================================
+var CONFIG = {
+  nome: "Seu Nome",
+  logo: "seunome",
+  profissao: "Designer Gráfico",
+  heroOla: "Olá, eu sou o Seu Nome",
+  heroTitulo: ["DESIGN", "GRÁFICO"],
+  heroTexto: "Crio identidades visuais e peças que transformam marcas em referências.",
+  foto: "",                       // caminho da imagem, ex.: "img/eu.webp"
+  fotoTexto: "Sua foto ou ilustração",
+  etiquetas: ["Identidade visual", "Social media", "Embalagens"],
+  faixa: ["Conectando valor", "à sua marca."],
+  sobreIntro: "Escreva aqui uma bio curta: quem você é, há quanto tempo trabalha com design e o que te diferencia.",
+  sobre: [
+    {t: "Quem sou", p: "Designer gráfico com foco em marcas que querem ser lembradas. Lorem ipsum dolor sit amet, consectetur adipiscing elit."},
+    {t: "Como trabalho", p: "Entendo o negócio antes de abrir o programa. Briefing, referências, rascunhos e entrega com arquivos organizados."},
+    {t: "Missão e valores", p: "Entregar rápido sem abrir mão da qualidade, com atenção ao cliente até o último dia do projeto."}
+  ],
+  ferramentas: ["Photoshop", "Illustrator", "Figma", "InDesign"],
+  servicos: [
+    {t: "Identidade visual", p: "Logo, paleta, tipografia e manual de marca para sua empresa começar com consistência."},
+    {t: "Social media", p: "Templates e artes para feed, stories e campanhas, prontos para você usar."},
+    {t: "Recuperação de identidade", p: "Perdeu seu logo ou os arquivos originais? Recrio tudo para você voltar a usar a marca."}
+  ],
+  contatoTitulo: ["Tem um projeto em mente?", "Vamos conversar."],
+  contatoBotao: "Fale comigo",
+  email: "seuemail@exemplo.com",
+  redes: [
+    {nome: "Instagram", url: ""},
+    {nome: "Behance", url: ""},
+    {nome: "LinkedIn", url: ""}
+  ],
+  ano: 2026
+};
+
+// Para adicionar um projeto, copie um item abaixo e troque os textos.
+// Quando tiver as imagens, troque "art" por "img" e ajuste o card.
+var PROJETOS = [
+  {t:"Café Aurora",c:"Identidade visual",a:"#1f6f5c",b:"#2ed573",ctx:"Cafeteria de bairro que queria uma marca acolhedora.",des:"Destacar-se entre cafés com visual parecido.",sol:"Logo manuscrito, paleta quente e embalagens com padrão próprio.",res:"Marca reconhecida na vizinhança e +30% de seguidores."},
+  {t:"Studio Pulso",c:"Social media",a:"#173048",b:"#4aa3ff",ctx:"Estúdio de pilates com perfil sem padrão visual.",des:"Criar um feed coeso e fácil de manter.",sol:"Sistema de templates editáveis para posts e stories.",res:"Equipe produz conteúdo em metade do tempo."},
+  {t:"Doce Vento",c:"Embalagens",a:"#8a3b6e",b:"#ff9ecf",ctx:"Linha de doces artesanais para presente.",des:"Embalagem bonita, barata e que protegesse o produto.",sol:"Caixa em papel kraft com ilustrações em hot stamping.",res:"Produto passou a vender como kit de presente."},
+  {t:"Orbe Tech",c:"Identidade visual",a:"#2b2f77",b:"#8f94ff",ctx:"Startup de tecnologia em fase de lançamento.",des:"Transmitir confiança sem parecer corporativa.",sol:"Símbolo geométrico, tipografia sem serifa e kit de apresentação.",res:"Lançamento com identidade completa em 4 semanas."},
+  {t:"Feira da Terra",c:"Social media",a:"#7a4b1f",b:"#ffc46b",ctx:"Feira orgânica mensal com divulgação improvisada.",des:"Atrair público novo para o evento.",sol:"Campanha de cartazes digitais e stories com ilustrações.",res:"Maior público da feira em dois anos."},
+  {t:"Marca Resgatada",c:"Recuperação",a:"#0f3d3d",b:"#2ed573",ctx:"Cliente perdeu os arquivos do logo original.",des:"Reproduzir a marca fielmente a partir de uma foto.",sol:"Redesenho vetorial e entrega do manual de uso.",res:"Marca recuperada e pronta para impressão."}
+];
+var grid=document.getElementById("grid"),filters=document.getElementById("filters"),modal=document.getElementById("modal");
+var cats=["Todos"].concat(PROJETOS.map(function(p){return p.c}).filter(function(c,i,a){return a.indexOf(c)===i}));
+var atual="Todos";
+function art(p){return "background:linear-gradient(135deg,"+p.a+","+p.b+")"}
+function render(){
+  filters.innerHTML="";
+  cats.forEach(function(c){
+    var b=document.createElement("button");b.className="chip";b.textContent=c;
+    b.setAttribute("aria-pressed",String(c===atual));
+    b.onclick=function(){atual=c;render()};filters.appendChild(b);
+  });
+  grid.innerHTML="";
+  PROJETOS.forEach(function(p,i){
+    if(atual!=="Todos"&&p.c!==atual)return;
+    var b=document.createElement("button");b.className="card";
+    b.innerHTML='<div class="art" style="'+art(p)+'">'+p.t.charAt(0)+'</div><div class="info"><h3>'+p.t+'</h3><p>'+p.c+'</p></div>';
+    b.onclick=function(){abrir(p)};grid.appendChild(b);
+  });
+}
+function abrir(p){
+  var m=document.getElementById("m-art");m.setAttribute("style",art(p));m.textContent=p.t.charAt(0);
+  document.getElementById("m-title").textContent=p.t;
+  document.getElementById("m-cat").textContent=p.c;
+  document.getElementById("m-body").innerHTML="<dt>Contexto</dt><dd>"+p.ctx+"</dd><dt>Desafio</dt><dd>"+p.des+"</dd><dt>Solução</dt><dd>"+p.sol+"</dd><dt>Resultado</dt><dd>"+p.res+"</dd>";
+  modal.showModal();
+}
+document.getElementById("close").onclick=function(){modal.close()};
+modal.addEventListener("click",function(e){if(e.target===modal)modal.close()});
+function $(id){return document.getElementById(id)}
+function el(tag,txt){var e=document.createElement(tag);if(txt)e.textContent=txt;return e}
+function duasLinhas(box,l){box.textContent=l[0];if(l[1]){var em=el("em",l[1]);box.appendChild(em)}}
+function preencher(){
+  var C=CONFIG;
+  document.title=C.nome+" — "+C.profissao;
+  var lg=$("logo");lg.textContent=C.logo;lg.appendChild(el("b","."));
+  $("h-ola").textContent=C.heroOla;
+  var h=$("h-titulo");h.textContent=C.heroTitulo[0];
+  if(C.heroTitulo[1]){h.appendChild(document.createElement("br"));h.appendChild(document.createTextNode(C.heroTitulo[1]))}
+  $("h-texto").textContent=C.heroTexto;
+  if(C.foto){$("foto-img").src=C.foto;$("foto-img").hidden=false;$("foto-txt").hidden=true}else{$("foto-txt").textContent=C.fotoTexto}
+  ["a","b","c"].forEach(function(k,i){var t=$("tag-"+k);if(C.etiquetas[i]){t.textContent=C.etiquetas[i]}else{t.hidden=true}});
+  duasLinhas($("faixa"),C.faixa);
+  $("sobre-intro").textContent=C.sobreIntro;
+  C.sobre.forEach(function(s){var d=el("div");d.appendChild(el("h3",s.t));d.appendChild(el("p",s.p));$("sobre-cols").appendChild(d)});
+  C.ferramentas.forEach(function(f){$("ferramentas").appendChild(el("span",f))});
+  C.servicos.forEach(function(s){var d=el("div");d.appendChild(el("h3",s.t));d.appendChild(el("p",s.p));$("servicos-lista").appendChild(d)});
+  duasLinhas($("contato-titulo"),C.contatoTitulo);
+  var b=$("contato-btn");b.textContent=C.contatoBotao;b.href="mailto:"+C.email;
+  C.redes.forEach(function(r){if(!r.url)return;var a=el("a",r.nome);a.href=r.url;a.target="_blank";a.rel="noopener";$("redes").appendChild(a)});
+  $("copy").textContent="© "+C.ano+" "+C.nome+". Todos os direitos reservados.";
+}
+preencher();
+render();
+</script>
+</body>
+</html>
